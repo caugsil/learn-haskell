@@ -92,8 +92,8 @@ jogo Pedra Tesoura   = Jogador1
 maiúsculas e minúsculas eliminadas de uma string passada por parâmetro usando
 list compreenshion.
 Dica: procure informações sobre a função elem.-}
-consoantes :: String -> [Bool]
-consoantes cs = [c `notElem` "aeiouAEIOU" | c<-cs]
+consoantes :: String -> String
+consoantes cs = [ c | c<-cs, c `notElem` "aeiouAEIOU"]
 
 
 
