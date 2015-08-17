@@ -22,9 +22,21 @@ listPergs ps = [pergNum p | p<-ps]
 
 --3. and’: recebe uma Pergunta como parâmetro e retorna a tabela verdade do and lógico usando Sim como verdadeiro e Nao como falso.
 
+and'::Pergunta->Bool->Bool
+and' Sim q = q
+and' Nao q = false
 
 --4. or’: Idem acima, porém, deve ser usado o ou lógico.
+
+or'::Pergunta->Bool->Bool
+or' Nao q = q
+or' Sim q = true
+
 --5. not’: Idem aos anteriores, porém, usando o not lógico.
+
+not':: Pergunta -> Bool
+not' Sim = false
+not' Nao = true
 
 -- Exercício 1.2 
 {-
@@ -35,6 +47,9 @@ listPergs ps = [pergNum p | p<-ps]
 
 l1 :: [Int]
 l1 = [11 ^ x | x<-[0..6]]
+
+l2::[Int]
+l2 = [ x | x mod 4 > 0, x<-[1..40]]
 
 -- Exercício 1.3 
 {-
