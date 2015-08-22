@@ -1,5 +1,6 @@
 module Lista1 where
 -- Andrei Martins Silva 1210045-7 Noturno
+-- Carlos Augusto Silva
 
 -- Exercicio 1.1
 {-
@@ -7,7 +8,7 @@ module Lista1 where
     Faca as funcoes abaixo determinando seus tipos explicitamente:
 -}
 
-data Pergunta = Nao | Sim
+data Pergunta = Nao | Sim deriving Show
 
 -- 1. pergNum: recebe via parâmetro uma Pergunta e retorne 0 para Nao e 1 para Sim;
 
@@ -22,9 +23,21 @@ listPergs ps = [pergNum p | p<-ps]
 
 --3. and’: recebe uma Pergunta como parâmetro e retorna a tabela verdade do and lógico usando Sim como verdadeiro e Nao como falso.
 
+and' :: Pergunta -> Pergunta -> Pergunta
+and' Sim Sim = Sim
+and' _ _ = Nao
 
 --4. or’: Idem acima, porém, deve ser usado o ou lógico.
+
+or' :: Pergunta -> Pergunta -> Pergunta
+or' Nao Nao = Nao
+or' _ _ = Sim
+
 --5. not’: Idem aos anteriores, porém, usando o not lógico.
+
+not' :: Pergunta -> Pergunta
+not' Sim = Nao
+not' Nao = Sim
 
 -- Exercício 1.2 
 {-
