@@ -249,6 +249,14 @@ Exercício 1.12 Gere as listas abaixo usando list compreenshions
 l1121 :: [Integer]
 l1121 = [1, 10 .. 64]
 
+-- hardcoded
+l1122 :: [Integer]
+l1122 = [x | x <- [2, 4 .. 30], x /= 6 && x /= 14 && x /= 20 && x /= 26]
+
+--hardcoded
+l1123 :: String
+l1123 = [c | c <- '@' : ['A'..'L'], c /= 'B', c /= 'F', c /= 'H', c /= 'I', c /= 'K']
+
 {-
 Exercício 1.13 Faça uma função, chamada revNum, que receba uma String s e
 um Int n. Esta deverá retornar as n primeiras letras em ordem reversa e o restante
@@ -257,6 +265,9 @@ Exemplo:
 revN um 4 ”F AT EC” = ”ET AF C”
 (1.1)
 -}
+revNum :: Int -> String -> String
+revNum n s = reverse (take n s) ++ drop n s
+
 {-
 Exercício 1.14 Crie o tipo de dado Binario que pode ser Zero ou Um. Crie tam-
 bém o tipo de dado Funcao que pode ser Soma2, Maior, Menor e Mult2. 
