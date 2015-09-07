@@ -122,7 +122,7 @@ l161 = ['A' : x : "BB" | x <- ['a'..'g']]
 
 -- 3. [1.0,0.5,0.25,0.125,0.0625,0.03125]
 l163 :: [Float]
-l163 = [1 / (2 ^ f)| f <- [0 .. 5]]
+l163 = [1 / (2 ^ f)| f <- [0..5]]
 
 {-
 Exercício 1.7 Sabe-se que as unidades imperiais de comprimento podem ser
@@ -215,3 +215,58 @@ estacao Novembro Norte = Outono
 estacao Novembro Sul = Primavera
 estacao Dezembro Norte = Inverno
 estacao Dezembro Sul = Verao
+
+{-
+Exercício 1.9 Faça uma função que receba uma String e retorne True se esta for
+um palíndromo, False caso contrário.
+-}
+palindromo :: String -> Bool
+palindromo str = str == reverse str
+
+{-
+Exercício 1.10 Faça uma função que elimine todos os números pares, todos os
+ímpares múltiplos de 7 e negativos de uma lista de inteiros passado via parâmetro.
+Você deve retorna esta lista em ordem reversa em comparação a do parâmetro.
+-}
+changeList :: [Int] -> [Int]
+changeList xs = [x | x <- reverse xs, mod x 2 > 0, mod x 7 > 0, x > 0]
+
+{-
+Exercício 1.11 Faça uma função que recebe três strings x, y e z como parâmetro.
+A função retorna uma tupla com três coordenadas contendo a ordem reversa em
+cada. A primeira coordenada deve conter string reversa do primeiro parâmetro e
+assim por diante.
+-}
+coord :: (String, String, String) -> (String, String, String)
+coord (x ,y ,z)= (reverse x, reverse y, reverse z)
+
+{-
+Exercício 1.12 Gere as listas abaixo usando list compreenshions
+• [1,10,19,28,37,46,55,64]
+• [2,4,8,10,12,16,18,22,24,28,30]
+• [’@’,’A’,’C’,’D’,’E’,’G’,’J’,’L’]
+-}
+l1121 :: [Integer]
+l1121 = [1, 10 .. 64]
+
+{-
+Exercício 1.13 Faça uma função, chamada revNum, que receba uma String s e
+um Int n. Esta deverá retornar as n primeiras letras em ordem reversa e o restante
+em sua ordem normal.
+Exemplo:
+revN um 4 ”F AT EC” = ”ET AF C”
+(1.1)
+-}
+{-
+Exercício 1.14 Crie o tipo de dado Binario que pode ser Zero ou Um. Crie tam-
+bém o tipo de dado Funcao que pode ser Soma2, Maior, Menor e Mult2. 
+Faça a função aplicar que recebe uma Funcao e dois Binarios seu retorno consiste em
+executar a operação desejada.
+-}
+{-
+Exercício 1.15 Faça uma função, chamada binList, usando list compreeshion
+que recebe uma lista de Binarios (ver exercício acima) e retorna outra 
+lista com elemento somado Um e convertido para Int.
+binList [U m, Zero, Zero, U m, Zero] = [0, 1, 1, 0, 1]
+(1.3)
+-}
