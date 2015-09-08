@@ -265,6 +265,7 @@ Exemplo:
 revN um 4 ”F AT EC” = ”ET AF C”
 (1.1)
 -}
+
 revNum :: Int -> String -> String
 revNum n s = reverse (take n s) ++ drop n s
 
@@ -274,6 +275,25 @@ bém o tipo de dado Funcao que pode ser Soma2, Maior, Menor e Mult2.
 Faça a função aplicar que recebe uma Funcao e dois Binarios seu retorno consiste em
 executar a operação desejada.
 -}
+
+data Binario = Zero | Um deriving Show
+data Funcao = Soma2 | Maior | Menor | Mult2
+
+aplicar :: Funcao -> Binario -> Binario -> Binario
+aplicar Soma2 Um Um = Zero
+aplicar Soma2 Zero q = q
+aplicar Soma2 p Zero = p
+
+aplicar Maior Zero Zero = Zero
+aplicar Maior _ _ = Um
+ 
+aplicar Menor Um Um = Um
+aplicar Menor _ _ = Zero
+ 
+aplicar Mult2 Zero _ = Zero
+aplicar Mult2 _ Zero = Zero
+aplicar Mult2 _ _ = Um
+
 {-
 Exercício 1.15 Faça uma função, chamada binList, usando list compreeshion
 que recebe uma lista de Binarios (ver exercício acima) e retorna outra 
@@ -281,3 +301,10 @@ lista com elemento somado Um e convertido para Int.
 binList [U m, Zero, Zero, U m, Zero] = [0, 1, 1, 0, 1]
 (1.3)
 -}
+
+binList :: [Binario] -> [Int]
+binList bs = [toInt'(aplicar Soma2 Um b) | b <- bs]  
+
+toInt' :: Binario -> Int
+toInt' Zero = 0
+toInt' Um = 1
