@@ -24,6 +24,28 @@ de inteiros.
 soma5 :: Integer -> [Integer]
 soma5 x = [x + 5]
 
+{-
+Exercício 4.3 Uma lista ordenada é uma lista cujos elementos são inseridos de
+forma ordenada (crescente). Usando o tipo
+ListaOrd a = a :?: (ListaOrd a) | Nulo deriving Show
+crie as funções:
+-}
+
+data ListaOrd a = a :?: (ListaOrd a) | Null deriving Show
+
+-- inserir :: (Ord a) ⇒ a → ListaOrd a → ListaOrd a
+
+inserir :: (Ord a) => a -> ListaOrd a -> ListaOrd a
+inserir x (l :?: ls)
+       | x < l = l :?: inserir x ls
+       | otherwise = x :?: (l :?: ls)
+inserir x Null = x :?: Null
+
+
+--remover :: (Eq a) ⇒ a → ListaOrd a → ListaOrd a
+
+--tamanho :: ListaOrd a → Int
+
 
 
 
