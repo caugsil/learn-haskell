@@ -37,14 +37,25 @@ data ListaOrd a = a :?: (ListaOrd a) | Null deriving Show
 
 inserir :: (Ord a) => a -> ListaOrd a -> ListaOrd a
 inserir x (l :?: ls)
-       | x < l = l :?: inserir x ls
-       | otherwise = x :?: (l :?: ls)
+       | x > l = x :?: (l :?: ls)
+       | otherwise = l :?: inserir x ls
 inserir x Null = x :?: Null
 
 
 --remover :: (Eq a) ⇒ a → ListaOrd a → ListaOrd a
 
+remover :: (Eq a) => a -> ListaOrd a -> ListaOrd a
+remover x (l :?: ls)
+       | x == l = ls
+       | otherwise = l :?: remover x ls 
+remover _ Null = Null
+       
 --tamanho :: ListaOrd a → Int
+
+tamanho :: ListaOrd a -> Int
+tamanho (_ :?: ls) = 1 + tamanho ls
+tamanho Null = 0
+       
 
 
 
